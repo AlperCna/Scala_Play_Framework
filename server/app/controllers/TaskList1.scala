@@ -6,9 +6,18 @@ import play.api.mvc.{AbstractController, ControllerComponents}
 import javax.inject.{Inject, Singleton}
 import play.api.mvc._
 import play.api.i18n._
+import play.api.data._
+import play.api.data.Forms._
+
+case class LoginData(username:String, password:String)
+
 
 @Singleton
 class TaskList1 @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+  val loginForm = Form(mapping(
+         "Usernamee" -> text(3,10),
+         "Password"  ->  text(8)
+  )(LoginData.apply)(LoginData.unapply))
 
   def login = Action { implicit request =>
     Ok(views.html.login1())
@@ -32,6 +41,9 @@ class TaskList1 @Inject()(cc: ControllerComponents) extends AbstractController(c
     }.getOrElse(Redirect(routes.TaskList1.login()))
   }
 
+  def validateLoginForm = Action {  implicit request =>
+      Ok("")
+  }
 
   def createUser = Action { implicit request =>
     val postVals = request.body.asFormUrlEncoded
