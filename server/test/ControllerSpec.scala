@@ -15,7 +15,18 @@ class ControllerSpec extends PlaySpec {
       bodyText must include ("Click for a new random number:")
       bodyText must include ("Click for a new random string:")
     }
+    "give back a product" in {
+      val result = controller.product("test", 42).apply(FakeRequest())
+      val bodyText = contentAsString(result)
+      bodyText mustBe ("Product type is: test, product number is: 42")
+    }
 
+    "give back a number" in {
+      val result = controller.randomNumber.apply(FakeRequest())
+      val bodyText = contentAsString(result)
+      bodyText.toInt must be >= 0
+      bodyText.toInt must be < 100
+    }
 
   }
 }
