@@ -1,0 +1,7 @@
+
+/**
+ *
+ */
+
+$("#contents").load("/login2")
+
