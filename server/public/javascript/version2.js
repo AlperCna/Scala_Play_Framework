@@ -17,5 +17,14 @@ function login() {
 
 function createUser(){
 
-    console.log("Try to create user")
+    const username = $("#createName").val();
+    const password = $("#createPass").val();
+    $("#contents").load("/create2?username=" + username + "&password=" + password);
+
+
+}
+
+
+function deleteTask(index) {
+    $("#contents").load("/deleteTask2?index=" + index);
 }

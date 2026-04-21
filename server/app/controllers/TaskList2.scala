@@ -24,4 +24,23 @@ class TaskList2 @Inject() (cc: ControllerComponents) extends AbstractController(
       Ok(views.html.login2())
     }
   }
+
+  def createUser(username: String, password: String) = Action {
+    println("creating a user.")
+    if (TaskListInMemoryModel.createUser(username, password)) {
+      Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username))).withSession("username" -> username)
+    } else {
+      Ok(views.html.login2())
+    }
+  }
+
+
+  def delete(index: Int) = Action { implicit request =>
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      TaskListInMemoryModel.removeTask(username, index);
+      Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username)))
+    }.getOrElse(Ok(views.html.login2()))
+  }
+
 }
