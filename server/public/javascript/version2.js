@@ -3,8 +3,10 @@
  *
  */
 
-$("#contents").load("/login2")
+const loginRoute = $("#loginRoute").val();
+const validateRoute = $("#validateRoute").val();
 
+$("#contents").load(loginRoute)
 
 
 
