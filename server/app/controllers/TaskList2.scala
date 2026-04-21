@@ -56,4 +56,8 @@ class TaskList2 @Inject() (cc: ControllerComponents) extends AbstractController(
     Redirect(routes.TaskList2.load()).withNewSession
   }
 
+  def generatedJS = Action {
+    Ok(views.js.generatedJS())
+  }
+
 }
