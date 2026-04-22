@@ -30,13 +30,18 @@ class TaskList3 @Inject() (cc: ControllerComponents) extends AbstractController(
             Ok(Json.toJson(true))
               .withSession("username" -> ud.username, "csrfToken" -> play.filters.csrf.CSRF.getToken.get.value)
           } else {
-            Ok(views.html.login2())
+            Ok(Json.toJson((false)))
           }
         case e @ JsError(_) => Redirect(routes.TaskList3.load())
       }
     }.getOrElse(Redirect(routes.TaskList3.load()))
   }
 
-
+  def taskList = Action { implicit request =>
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      Ok(Json.toJson(TaskListInMemoryModel.getTasks(username)))
+    }.getOrElse(Ok(Json.toJson(Seq.empty[String])))
+  }
 
 }
