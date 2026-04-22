@@ -39,6 +39,7 @@ GET   /load3            controllers.TaskList3.load
 GET   /data             controllers.TaskList3.data
 POST	/validate3						controllers.TaskList3.validate
 GET 	/taskList3						controllers.TaskList3.taskList
+POST	/addTask3						controllers.TaskList3.addTask
 
 GET        /assets/*file                 controllers.Assets.at(file)
 GET        /versionedAssets/*file        controllers.Assets.versioned(path="/public", file: Asset)
