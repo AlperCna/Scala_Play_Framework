@@ -36,7 +36,6 @@ GET		/generatedJS					controllers.TaskList2.generatedJS
 
 #Routes for version 3
 GET   /load3            controllers.TaskList3.load
-GET   /data             controllers.TaskList3.data
 POST	/validate3						controllers.TaskList3.validate
 POST	/create3						controllers.TaskList3.createUser
 GET 	/taskList3						controllers.TaskList3.taskList

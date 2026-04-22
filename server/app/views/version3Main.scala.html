@@ -22,7 +22,6 @@
         <button onclick="createUser()">Create User</button><span id="create-message"></span>
     </div>
 
-
     <div id="task-section" hidden>
         <h2>Task List</h2>
 
@@ -38,6 +37,7 @@
     </div>
 
 
+
     <input type="hidden" id="csrfToken" value="@helper.CSRF.getToken.value">
     <input type="hidden" id="validateRoute" value="@routes.TaskList3.validate()">
     <input type="hidden" id="tasksRoute" value="@routes.TaskList3.taskList()">
@@ -47,6 +47,5 @@
     <input type="hidden" id="logoutRoute" value="@routes.TaskList3.logout()">
 
     <script src="@routes.Assets.versioned("javascript/version3.js")"></script>
-
-
+        <!-- <script src="@routes.TaskList2.generatedJS()"></script> -->
 }
